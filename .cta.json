@@ -1,0 +1,22 @@
+{
+  "projectName": "fix-spelling-and-grammar",
+  "mode": "file-router",
+  "typescript": true,
+  "tailwind": true,
+  "packageManager": "pnpm",
+  "addOnOptions": {},
+  "git": true,
+  "version": 1,
+  "framework": "react-cra",
+  "chosenAddOns": [
+    "biome",
+    "start",
+    "db",
+    "form",
+    "tanstack-query",
+    "shadcn",
+    "store",
+    "t3env",
+    "table"
+  ]
+}
