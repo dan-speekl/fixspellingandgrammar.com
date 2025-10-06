@@ -1,13 +1,13 @@
-import { TanStackDevtools } from '@tanstack/react-devtools';
+// import { TanStackDevtools } from '@tanstack/react-devtools';
 import type { QueryClient } from '@tanstack/react-query';
 import {
   createRootRouteWithContext,
   HeadContent,
   Scripts,
 } from '@tanstack/react-router';
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
+// import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { Analytics } from '@vercel/analytics/react';
-import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools';
+// import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools';
 import appCss from '@/styles.css?url';
 
 interface RouterContext {
@@ -48,7 +48,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <Analytics />
-        <TanStackDevtools
+        {/* <TanStackDevtools
           config={{
             position: 'bottom-right',
           }}
@@ -59,7 +59,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             },
             TanStackQueryDevtools,
           ]}
-        />
+        /> */}
         <Scripts />
       </body>
     </html>
