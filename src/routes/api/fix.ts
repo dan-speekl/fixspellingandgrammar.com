@@ -6,7 +6,8 @@ import { dedent } from '@/lib/utils';
 import { fixedTextSchema } from '@/schemas/fixed-text-schema';
 
 const textSchema = z.object({
-  text: z.string().max(1000),
+  text: z.string().max(2000),
+  model: z.enum(['gpt-5', 'gpt-4o']).optional().default('gpt-4o'),
 });
 
 export const Route = createFileRoute('/api/fix')({
@@ -28,10 +29,10 @@ export const Route = createFileRoute('/api/fix')({
           );
         }
 
-        const { text } = parsed.data;
+        const { text, model } = parsed.data;
 
         const stream = streamObject({
-          model: openai('gpt-5'),
+          model: openai(model),
           schema: fixedTextSchema,
           prompt: dedent(`
               You are a professional editor specializing in grammar and spelling correction.

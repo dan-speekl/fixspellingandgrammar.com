@@ -16,6 +16,7 @@ export const Route = createFileRoute('/')({
 function App() {
   const [text, setText] = useState('');
   const [copied, setCopied] = useState(false);
+  const [selectedModel, setSelectedModel] = useState('GPT-4o');
 
   const { object, submit, isLoading } = useObject({
     api: '/api/fix',
@@ -222,8 +223,13 @@ function App() {
               <AiPromptInput
                 prompt={text}
                 onPromptChange={setText}
-                onSubmit={() => submit({ text })}
+                onSubmit={() => {
+                  const model = selectedModel.toLowerCase();
+                  submit({ text, model });
+                }}
                 placeholder="Paste or type text to fix spelling and grammar..."
+                selectedModel={selectedModel}
+                onSelectedModelChange={setSelectedModel}
               />
             </div>
           </div>

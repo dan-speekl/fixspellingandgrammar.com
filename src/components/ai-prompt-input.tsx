@@ -1,6 +1,5 @@
 import { ArrowRight, Bot, Check, ChevronDown, Paperclip } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -19,6 +18,8 @@ type Props = {
   onSubmit: () => void;
   placeholder?: string;
   uploadFileAllowed?: boolean;
+  selectedModel: string;
+  onSelectedModelChange: (model: string) => void;
 };
 
 export function AiPromptInput({
@@ -27,17 +28,19 @@ export function AiPromptInput({
   onSubmit,
   placeholder,
   uploadFileAllowed,
+  selectedModel,
+  onSelectedModelChange,
 }: Props) {
   const { textareaRef, adjustHeight } = useAutoResizeTextarea({
     minHeight: 72,
     maxHeight: 220,
   });
-  const [selectedModel, setSelectedModel] = useState('GPT-5');
 
-  const AI_MODELS = ['GPT-5'];
+  const AI_MODELS = ['GPT-5', 'GPT-4o'];
 
   const MODEL_ICONS: Record<string, React.ReactNode> = {
     'GPT-5': <OpenAiLogo className="w-5 h-5" />,
+    'GPT-4o': <OpenAiLogo className="w-5 h-5" />,
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -124,7 +127,7 @@ export function AiPromptInput({
                       {AI_MODELS.map((model) => (
                         <DropdownMenuItem
                           key={model}
-                          onSelect={() => setSelectedModel(model)}
+                          onSelect={() => onSelectedModelChange(model)}
                           className="flex items-center justify-between gap-2"
                         >
                           <div className="flex items-center gap-2">
