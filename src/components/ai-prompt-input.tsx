@@ -36,11 +36,12 @@ export function AiPromptInput({
     maxHeight: 220,
   });
 
-  const AI_MODELS = ['GPT-5', 'GPT-4o'];
+  const AI_MODELS = ['GPT-5', 'GPT-4o', 'GPT-4.1'];
 
   const MODEL_ICONS: Record<string, React.ReactNode> = {
     'GPT-5': <OpenAiLogo className="w-5 h-5" />,
     'GPT-4o': <OpenAiLogo className="w-5 h-5" />,
+    'GPT-4.1': <OpenAiLogo className="w-5 h-5" />,
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
