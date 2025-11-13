@@ -7,7 +7,10 @@ import { fixedTextSchema } from '@/schemas/fixed-text-schema';
 
 const textSchema = z.object({
   text: z.string().max(2000),
-  model: z.enum(['gpt-5', 'gpt-4o', 'gpt-4.1']).optional().default('gpt-4o'),
+  model: z
+    .enum(['gpt-5', 'gpt-5.1', 'gpt-4o', 'gpt-4.1'])
+    .optional()
+    .default('gpt-4o'),
 });
 
 export const Route = createFileRoute('/api/fix')({
