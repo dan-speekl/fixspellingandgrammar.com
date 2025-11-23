@@ -49,7 +49,7 @@ export function AiPromptInput({
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       onSubmit();
-      onPromptChange('');
+      // onPromptChange('');
       adjustHeight(true);
     }
   };
